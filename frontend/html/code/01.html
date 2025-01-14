@@ -28,6 +28,11 @@
             <strong>allowing them to be stored, transmitted, </strong>
             <i>and transformed using computers.</i>
         </p>
+        <p>
+            <span style="color:blue;">2001年1月，</span>中央省厅再编，把厚生省与劳动省合并为厚生劳动省。
+            主掌健康、医疗、儿童、育儿、福祉、看护、雇用、劳动、年金等政策领域[4]。
+        </p>
+
         <hr>
         <h2>无序列表</h2>
         <ul>
@@ -36,6 +41,7 @@
             <li>Python</li>
             <li>JavaScript</li>
         </ul>
+
         <hr>
         <h2>有序列表</h2>
         <ol>
@@ -44,6 +50,7 @@
             <li>Python</li>
             <li>JavaScript</li>
         </ol>
+
         <hr>
         <h2>嵌套列表</h2>
         <ul>
@@ -69,14 +76,17 @@
                 </ul>
             </li>
         </ul>
+
         <hr>
         <h2>超链接</h2>
         <a href="https://www.php.net/">PHP 官网</a>
+
         <hr>
         <h2>图片</h2>
         <img style="height: 100px; width: 100px;"
         src="https://www.php.net/images/logos/new-php-logo.svg" alt="PHP Logo">
         <img style="height: 100px; width: 200px;" src="./01.png" alt="">
+
         <hr>
         <h2>表格</h2>
         <table border="1">
@@ -109,6 +119,7 @@
                 </tr>
             </tbody>
         </table>
+
         <hr>
         <h2>表单</h2>
         <!-- action 表示数据提交到的地址 -->
@@ -118,11 +129,39 @@
             <label for="username">用户名：</label>
             <input type="text" name="username" id="username" placeholder="请输入用户名">
             <br>
-            <label for="password">密码：</label>
-            <input type="text" name="password" id="password" placeholder="请输入密码">
             <br>
-            <input type="submit" value="登录">
+            <label for="email">邮箱：</label>
+            <input type="email" name="email" id="email" placeholder="请输入邮箱">
+            <br>
+            <br>
+            <label for="password">密码：</label>
+            <input type="password" name="password" id="password" placeholder="请输入密码">
+            <br>
+            <br>
+            <label for="info">个人简介：</label>
+            <textarea name="info" id="info" rows="4" cols="50" placeholder="请输入简介"></textarea>
+            <br>
+            <br>
+            <input type="submit" value="提交">
         </form>
+
+        <hr>
+        <h2>单选按钮</h2>
+        <span>请选择性别：</span>
+        <label for="gender-male"></label>
+        <input type="radio" name="gender" id="gender-male" value="male">男
+        <label for="gender-female"></label>
+        <input type="radio" name="gender" id="gender-female" value="female">女
+
+        <hr>
+        <h2>复选框</h2>
+        <span>请选择爱好：</span>
+        <label for="hobby-football"></label>
+        <input type="checkbox" name="hobby" id="hobby-football" value="football">足球
+        <label for="hobby-music"></label>
+        <input type="checkbox" name="hobby" id="hobby-music" value="music">音乐
+        <label for="hobby-movie"></label>
+        <input type="checkbox" name="hobby" id="hobby-movie" value="movie">电影
 
         <div style="height: 300px;"></div>
     </body>
