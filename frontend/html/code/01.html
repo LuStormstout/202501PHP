@@ -88,7 +88,7 @@
 
         <hr>
         <h2>表格</h2>
-        <table border="1">
+        <table border="20" cellpadding="20" cellspacing="0">
             <thead>
                 <tr style="background-color: red;">
                     <th>姓名</th>
@@ -141,6 +141,7 @@
             <textarea name="info" id="info" rows="4" cols="50" placeholder="请输入简介"></textarea>
             <br>
             <br>
+            <button type="reset">重置</button>
             <input type="submit" value="提交">
         </form>
 
@@ -161,6 +162,68 @@
         <input type="checkbox" name="hobby" id="hobby-music" value="music">音乐
         <label for="hobby-movie"></label>
         <input type="checkbox" name="hobby" id="hobby-movie" value="movie">电影
+
+        <hr>
+        <h2>下拉菜单</h2>
+        <select name="city" id="city">
+            <option value="" selected> -- 请选择城市 -- </option>
+            <option value="beijing">北京</option>
+            <option value="shanghai">上海</option>
+            <option value="guangzhou">广州</option>
+        </select>
+        <select name="language" id="language">
+            <option value="zh-CN" selected>简体中文</option>
+            <option value="ja">日本語</option>
+            <option value="en">English</option>
+        </select>
+
+        <hr>
+        <h2>多媒体标签</h2>
+        <h3>音频标签</h3>
+        <audio controls>
+            <source src="https://www.runoob.com/try/demo_source/horse.mp3" type="audio/mpeg">
+            您的浏览器不支持 audio 元素。
+        </audio>
+        <h3>视频标签</h3>
+        <video width="320" height="240" controls>
+            <source src="https://www.runoob.com/try/demo_source/movie.mp4" type="video/mp4">
+            您的浏览器不支持 video 元素。
+        </video>
+
+        <hr>
+        <h2>块级元素和行内元素</h2>
+        <span>块级元素独占一行，常见的块级元素有：</span>
+        <div>这是 div 标签</div>
+        <p>这是 p 标签</p>
+        <h1>这是 h1 标签</h1>
+        <span>行内元素不会独占一行，常见的行内元素有：</span>
+        <span>这是 span 标签</span>
+        <a href="">这是 a 标签</a>
+        <img style="height: 100px; width: 100px;" 
+        src="https://www.php.net/images/logos/new-php-logo.svg" alt="" title="这是 img 标签">
+
+        <hr>
+        <h2>语义化标签</h2>
+        <!-- 可以理解为是有特殊名字的 div 标签 -->
+        <header>一般网页头部显示的东西都会放在 header 标签中</header>
+        <nav>一般导航栏会放在 nav 标签中间「navigation」</nav>
+        <section>一般网页中的具体内容会放在 section 标签</section>
+        <article>一般文章内容会放在 article 标签中</article>
+        <footer>一般网页的底部信息会放在 footer 标签中</footer>
+        <header>
+            <h1>我的网站</h1>
+            <nav>
+              <a href="#home">首页</a>
+              <a href="#about">关于</a>
+            </nav>
+          </header>
+          <section>
+            <h2>文章标题</h2>
+            <p>这是文章内容。</p>
+          </section>
+          <footer>
+            <p>版权所有 &copy; 2025</p>
+          </footer>
 
         <div style="height: 300px;"></div>
     </body>
