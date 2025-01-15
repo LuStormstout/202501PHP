@@ -1,0 +1,78 @@
+body {
+    font-size: 12px;
+
+    /* 微软雅黑 windows 一般都会有的字体*/
+    /* font-family: "Microsoft YaHei"; */
+
+    /* 在 MacOS 系统中这个字体一般都会有 */
+    font-family: Monaco;
+}
+
+/* 元素（标签）选择器设置的样式，会作用于当前网页中的所有该元素，下面的例子会作用于当前网页中的所有 p 标签 */
+/* p {
+    color: blue;
+} */
+
+/* 类选择器就是 . 加上 HTML 标签的 class 属性的值 */
+.div-level-1 {
+    height: 300px;
+    width: 300px;
+    background-color: #f00;
+}
+
+.div-level-2 {
+    height: 100px;
+    width: 100px;
+    background-color: #0f0;
+}
+
+.test-change-text-style {
+    color: #fff01f;
+    font-size: 18px;
+}
+
+/* 选择器组,所有类名为 div-group-1 元素中的字体大小都会被设置为50px */
+.div-group-1 {
+    font-size: 25px;
+}
+
+/* 用 # 加上 HTML 元素的 id 属性的值就是 css 中的 id 选择器 */
+#div-id-1 {
+    background-color: #f0f;
+}
+
+/* 组合选择器 后代选择器（子元素），这种会选择所有的子元素 */
+#div-id-1 p {
+    font-size: 30px;
+}
+
+/* 子选择器，只会选择直接子元素 */
+#div-id-1 > p {
+    font-size: 9px;
+}
+
+/* 兄弟选择器，紧邻兄弟选择器（+）选择某元素的下一个兄弟元素， 通用兄弟选择器（~）选择某元素的所有兄弟元素*/
+/* 这个相当于是用类选择器获取到类名为 brother-selector-1 的 HTML标签的紧邻兄弟元素 */
+.brother-selector-1 + p {
+    color: #f0f;
+}
+/* 这个相当于是用类选择器获取到类名为 brother-selector-1 的 HTML标签的所有兄弟元素 */
+.brother-selector-1 ~ p {
+    color: #fff01f;
+}
+
+/* 属性选择器 */
+/* 基本属性选择器，通过 HTML 的其他属性来选择元素（标签） */
+input[type="text"] {
+    color: #fcc;
+}
+
+/* 存在属性的话就会改变样式 */
+[title] {
+    color: aqua;
+}
+
+/* 指定某个属性的值为「什么（brown）」的时候才会起作用 */
+[title="brown"] {
+    color: brown;
+}
