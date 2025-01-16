@@ -1,0 +1,50 @@
+.card {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+.card h1 {
+    font-size: 20px;
+    color: #333;
+}
+
+.card p {
+    font-size: 16px;
+    color: #777;
+}
+
+.card a {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    /* 当鼠标移动到元素上的时候改变光标的样式，这里是变成了手的形状 */
+    cursor: pointer;
+    /* 取消掉 a 标签的下划线 */
+    text-decoration: none;
+}
+
+.card button:hover {
+    background-color: #0056b3;
+}
+
+.card ul {
+    margin-left: 3%;
+    text-align: left;
+    list-style: none;
+    margin-bottom: 20px;
+}

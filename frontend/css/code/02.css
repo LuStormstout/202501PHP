@@ -1,0 +1,217 @@
+body {
+    margin-left: 5%;
+}
+
+a {
+    font-size: 30px;
+}
+
+/* 未访问的链接 */
+a:link {
+    color: #FF0000;
+}
+
+/* 已访问的链接 */
+a:visited {
+    color: #00FF00;
+}
+
+/* 鼠标移动到链接上 */
+a:hover {
+    color: #FF00FF;
+}
+
+/* 选定（激活）的链接 */
+a:active {
+    color: #0000FF;
+}
+
+/* 当光标选中的时候 */
+input:focus {
+    background-color: #FFFB00;
+}
+
+/* 当鼠标指向的时候 */
+button:hover {
+    background-color: #FFFB00;
+}
+
+/* CSS 属性讲解 */
+p {
+    color: aqua;
+}
+
+.box {
+    background-color: rgba(242,242,242);
+}
+
+.change-background-image {
+    width: 400px;
+    height: 200px;
+    background-image: url('./01.png');
+    /* 拉伸覆盖（自适应） */
+    background-size: cover; 
+    /* 局中显示 */
+    /* background-position: center;  */
+}
+
+.border-radius {
+    width: 200px;
+    height: 200px;
+    background-color: rgba(24,24,24);
+    border: 12px solid #FF0000;
+    border-top: 12px dashed blue;
+    border-bottom: 12px dashed blue;
+    border-radius: 40px;
+    /* 元素（标签）阴影 */
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.5);
+}
+
+.shadow-p {
+    color: #000;
+    font-size: 50px;
+    /* 文本阴影 */
+    text-shadow: 3px 3px 2px gray;
+}
+
+.font {
+    font-size: 50px;
+    font-family: "Microsoft YaHei";
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: underline;
+}
+
+.text {
+    width: 600px;
+    height: 400px;
+    border: 3px solid #FF0000;
+    text-align: center;
+    line-height: 3;
+}
+
+.div-1 {
+    width: 500px;
+    height: 500px;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid #FF0000;
+    /* 内边距 */
+    padding: 20px;
+}
+
+.div-2 {
+    width: 400px;
+    height: 400px;
+    border: 3px solid blue;
+}
+
+.div-3 {
+    width: 100px;
+    height: 100px;
+    border: 3px solid yellow;
+    /* 外边距 */
+    margin: 20px;
+}
+
+.position-1 {
+    width: 400px;
+    height: 400px;
+    border: 3px solid #FF0000;
+}
+
+.position-2 {
+    width: 200px;
+    height: 200px;
+    border: 3px solid blue;
+    /* 相对定位 */
+    position: relative;
+    top: 10px;
+    left: 10px;
+}
+
+.position-3 {
+    width: 200px;
+    height: 200px;
+    border: 3px solid yellow;
+    /* 绝对定位 */
+    position: absolute;
+    top: 980px;
+    left: 650px;
+}
+
+.position-4 {
+    width: 200px;
+    height: 200px;
+    border: 3px solid green;
+    /* 固定定位 */
+    position: fixed;
+    top: 70%;
+    left: 90%;
+}
+
+.position-5 {
+    width: 100px;
+    height: 100px;
+    border: 3px solid red;
+    /* 粘性定位 */
+    position: sticky;
+    top: 800px;
+    left: 800px;
+}
+
+/* 过渡效果 */
+.transitions {
+    width: 200px;
+    height: 80px;
+    background-color: blue;
+    transition: background-color 2s ease;
+}
+
+/* 定义动画名称和关键帧 */
+@keyframes move {
+    0% {
+      transform: translateX(0px);
+    }
+    100% {
+      transform: translateX(300px);
+    }
+  }
+
+/* 应用动画 */
+.animations {
+    width: 200px;
+    height: 80px;
+    background-color: red;
+    animation: move 5s infinite;
+    transition: background-color 2s ease;
+    background-color: gray;
+    border: 12px solid #FF0000;
+    border-radius: 40px;
+    /* 元素（标签）阴影 */
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.5);
+}
+
+.media-queries {
+    width: 2.1in;
+    height: 2.1in;
+    background-color: red;
+    /* 媒体查询 */
+    @media (max-width: 600px) {
+        .media-queries-p {
+            padding-top: 80px;
+        }
+        background-color: blue;
+    }
+}
+
+.fluid-layout {
+    width: 100%;
+    margin: 0, auto;
+    border: 12px solid #FF0000;
+}
+
+.img-test {
+    width: 100%;
+    height: auto;
+}
