@@ -38,7 +38,7 @@
     text-decoration: none;
 }
 
-.card button:hover {
+.card a:hover {
     background-color: #0056b3;
 }
 
