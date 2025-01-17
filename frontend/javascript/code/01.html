@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 语法：就是这个编程语言的规则，就是这个编程语言的语法
+        // alert("欢迎来到日本从事 IT 行业！");
+        // 变量名要有意义，不能使用中文，做到见名知意
+        // 变量是用来存储数据的，变量名是用来标识变量的
+        // var 变量名 = 值; var 是用来定义全局或局部变量的
+        // let 变量名 = 值; let 是用来定义局部变量的
+        var username = "张三";
+        var age = 19;
+        // let age = 18;
+        console.log(username);
+
+        // 常量：就是不能被修改的变量，用来存储不会改变的数据
+        const PI = 3.1415926;
+        const JAPAN_LANG = "日本語";
+        // PI = 123; // 报错，常量不能被修改
+
+        // 数据类型：就是数据的种类，JavaScript 有 8 种数据类型
+        // 1. Number 数字类型 整数和小数
+        let num = 123; // 整数
+        let height = 180.3; // 小数，浮点数
+        // 2. String 字符串类型，用单引号或双引号括起来的数据
+        let name = "李四";
+        let address = '日本东京';
+        let email = "example@test.com";
+        // 3. Boolean 布尔类型，只有两个值 true 和 false
+        let isLogin = true;
+        let isLogout = false;
+        // 4. Null 空类型，表示没有值，表示一个空对象
+        let empty = null;
+        console.log(empty);
+        // 5. Undefined 未定义类型，表示没有定义值，表示一个未定义的对象
+        let undef;
+        console.log(undef);
+        // 6. Object 对象类型，表示一个对象，对象是由键值对组成的
+        let person = {
+            name: "张三",
+            age: 19,
+            isStudent: false
+        };
+        console.log(person);
+        // key 是属性，value 是值
+        // 通过键（属性）获取对象中的值
+        console.log(person.name);
+        // 7. Array 数组类型，表示一个数组，数组是由多个元素组成的
+        let fruits = ["apple", "香蕉", "橘子"];
+        let scores = [90, 80, 70, 60];
+        console.log(fruits);
+        // 通过下标（索引）获取数组中的元素
+        console.log(fruits[1]);
+        console.log(scores);
+        // 8. Function 函数类型，表示一个函数，函数是一段可重复使用的代码块
+        // 形式参数：就是函数定义时的参数，用来接收实际参数的值
+        // 函数是用来实现某个功能的代码块，函数名是用来标识函数的
+        function sayHello(name) {
+            // console.log("Hello, " + name);
+            return "Hello, " + name;
+        }
+        // 实际参数：就是函数调用时的参数，用来传递给形式参数的值
+        // 调用函数：就是执行函数的代码块，函数名后面加括号
+        // 这里就是将函数 sayHello 的返回值赋值给变量 returnContent
+        let returnContent = sayHello(name);
+        // 将变量 returnContent 的值输出到控制台
+        console.log(returnContent);
+
+        // 为什么要有数据类型？
+        // 为了区分数据的种类，方便开发人员对数据进行操作，以实现不同的开发需求（功能）
+        // 比如说我们现在去进货，需要进一些水果，我们就可以用数组来存储水果
+
+        // 数据类型检测：就是检测数据的种类，用来判断数据的类型
+        // typeof 是用来检测数据类型的运算符
+        console.log(typeof returnContent); // string
+        console.log(typeof person); // object
+        // object 虽然我们把 fruits 定义的时候叫做数组，但是打印类型的时候仍然显示的是对象（object）
+        console.log(typeof fruits);
+
+        // 算术运算符
+        let enScore = 10;
+        let mathScore = 5;
+        console.log(enScore + mathScore) // 加法 15
+        console.log(enScore - mathScore) // 减法 5
+        console.log(enScore * mathScore) // 乘法 50
+        console.log(enScore / mathScore) // 除法 2
+        console.log(enScore % mathScore) // 取余 0
+        console.log(mathScore ** 2) // 幂运算 25
+        // 比较运算符
+        let x = 10;
+        let y = 20;
+        console.log(x > y);  // 输出：false
+        console.log(x < y);  // 输出：true
+        console.log(x >= y); // 输出：false
+        console.log(x <= y); // 输出：true
+        console.log(x == "10"); // 输出：true（类型转换后比较）
+        console.log(x === "10"); // 输出：false（全等，不转换类型）
+        console.log(x != y);  // 输出：true
+        console.log(x !== y); // 输出：true
+        // 逻辑运算符
+        let a = true;
+        let b = false;
+        console.log(a && b); // 逻辑与 and：输出 false
+        console.log(a || b); // 逻辑或 or：输出 true
+        console.log(!a);     // 逻辑非 「not」：输出 false
+
+        // 条件语句
+        // if ... else 语句
+        // 根据条件执行不同的代码
+        let myAge = 20;
+        if (myAge >= 20) {
+            console.log("我成年了！");
+        } else {
+            console.log("我还未成年！未满 20 岁！");
+        }
+        // if ... else if ... else 语句
+        // 处理多个条件
+        let score = 85;
+        if (score >= 90) {
+            console.log("优秀");
+        } else if (score >= 60) {
+            console.log("及格");
+        } else {
+            console.log("不及格");
+        }
+        // 三元运算符
+        let isMember = true;
+        let price = isMember ? 100 : 150; // 如果是会员，价格为 100，否则为 150
+        // 相当于
+        // if (isMember === true) {
+        //     let price = 100;
+        // } else {
+        //     let = 150;
+        // }
+        // if (isMember === true) 这个里面的东西（执行结果）是真的？假的？对的？错的？
+        // if (isMember) 和 if (isMember === true) 其实是一样的
+        console.log(price);
+
+        // switch 语句
+        // 适用于多分支情况：
+        let day = 3;
+        switch (day) {
+            case 1:
+                console.log("星期一");
+                break;
+            case 2:
+                console.log("星期二");
+                break;
+            case 3:
+                console.log("星期三");
+                break;
+            default:
+                console.log("无效的输入");
+        }
+
+        // 循环结构
+        // for 循环
+        // for (初始化; 条件; 迭代) {
+        //     // 循环体
+        // }
+        // i++ 相当于 i = i + 1 
+        for (let i = 0; i < 5; i++) {
+            console.log("当前的值为：" + i);
+        }
+
+        // while 循环
+        // 只要条件为真，就执行循环体：
+        let count = 0;
+        while (count < 5) {
+            console.log("计数：" + count)
+            count++;
+        }
+
+        // do...while 循环
+        // 先执行一次循环体，然后检查条件：
+        let count1 = 0;
+
+        do {
+            console.log("计数：" + count1);
+            count1++;
+        } while (count1 < 5);
+
+        // for...in 循环
+        // 用于遍历对象的属性：
+        for (let key in person) {
+            console.log(key + ": " + person[key]);
+        }
+
+        // for...of 循环
+        // 用于遍历可迭代对象（如数组、字符串）：
+        for (let fruit of fruits) {
+            console.log(fruit);
+        }
+
+        // 循环控制
+        // break：立即跳出循环。
+        // continue：跳过当前循环的剩余部分，直接进入下一次循环。
+        for (let i = 0; i < 10; i++) {
+            if (i === 5) break;
+            console.log(i);
+        }
+
+        for (let i = 0; i < 10; i++) {
+            if (i % 2 === 0) continue;
+            console.log(i);
+        }
+
+        let strA = "flexbox ";
+        let strB = "的两根轴线";
+        let numA = 2;
+        let numB = 3;
+        console.log(strA + strB);
+        console.log(numA + numB);
+        console.log(strB + numA); // 会输出（的两根轴线2）
+
+    </script>
+    <script src="01.js"></script>
+</body>
+
+</html>
