@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flex test</title>
+    <style>
+        .item {
+            border: 1px solid red;
+        }
+
+        /* flex-direction 测试 */
+        .container {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .item {
+            width: 150px;
+            height: 150px;
+            background: coral;
+            margin: 5px;
+        }
+
+        /* justify-content 测试 */
+        .container {
+            display: flex;
+
+            /* flex-start：从主轴起点对齐（默认）。
+            center：主轴居中对齐。
+            flex-end：从主轴终点对齐。
+            space-between：两端对齐，子元素之间的间距平均分配。
+            space-around：子元素周围的间距相等。
+            space-evenly：子元素之间的间距完全均匀。 */
+
+            /* justify-content: space-around; */
+            /* justify-content: flex-start; */
+            /* justify-content: center; */
+            /* justify-content: flex-end; */
+            /* justify-content: space-between; */
+            justify-content: space-evenly;
+        }
+
+        .container-1 {
+            display: flex;
+
+            /* flex-start：从交叉轴的起点对齐。
+            center：交叉轴居中对齐。
+            flex-end：从交叉轴的终点对齐。
+            stretch：子元素拉伸以填满交叉轴（默认）。
+            baseline：子元素的文本基线对齐。 */
+
+            align-items: baseline;
+        }
+
+        .item-1 {
+            width: 50px;
+            background: lightgreen;
+        }
+
+        .container-2 {
+            display: flex;
+        }
+
+        .item-2-1 {
+            flex: 2;
+            background: lightgreen;
+        }
+
+        .item-2-2 {
+            flex: 1;
+            background: lightcoral;
+        }
+
+        .item-2-3 {
+            flex: 1;
+            background: lightblue;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- flex-direction justify-content -->
+    <div class="container">
+        <div class="item">设置子元素在主轴上的对齐方式。</div>
+        <div class="item">设置子元素在主轴上的对齐方式。</div>
+        <div class="item">设置子元素在主轴上的对齐方式。</div>
+    </div>
+
+    <!-- align-items -->
+    <div class="container-1">
+        <div class="item-1" style="height: 50px;">A</div>
+        <div class="item-1" style="height: 100px;">B</div>
+        <div class="item-1" style="height: 75px;">C</div>
+    </div>
+
+    <!-- 弹性项目的属性 flex -->
+    <div class="container-2">
+        <div class="item-2-1">A</div>
+        <div class="item-2-2">B</div>
+        <div class="item-2-3">C</div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flex nav</title>
+    <style>
+        .navbar {
+            display: flex; /* 使用flex布局 */
+            justify-content: space-between; /* 左右两端对齐 */
+            align-items: center; /* 垂直居中对齐 */
+            padding: 10px 20px; /* 内边距 */
+            background-color: rgba(116,49,250); /* 背景颜色 */
+            color: #fff; /* 文字颜色 */
+        }
+
+        .logo {
+            font-size: 1.5em; /* 字体大小 */
+            font-weight: bold; /* 字体粗细 */
+        }
+
+        .nav-links {
+            display: flex; /* 使用flex布局 */
+            gap: 15px; /* 子元素间距 */
+        }
+
+        .nav-links a {
+            text-decoration: none; /* 文字下划线 */
+            color: #fff; /* 文字颜色 */
+            padding: 5px 10px; /* 内边距 */
+            transition: background-color 0.3s; /* 过渡动画 */
+        }
+
+        .nav-links a:hover {
+            background-color: #555; /* 鼠标悬停背景颜色 */
+            border-radius: 5px; /* 圆角 */
+        }
+
+        @media (max-width: 600px) {
+            .navbar {
+                flex-direction: column; /* 垂直布局 */
+                align-items: flex-start; /* 左对齐 */
+            }
+
+            .nav-links {
+                flex-direction: column; /* 垂直布局 */
+                width: 100%; /* 宽度100% */
+            }
+
+            .nav-links a {
+                width: 100%; /* 宽度100% */
+                text-align: left; /* 文字左对齐 */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="logo">我的网站</div>
+        <div class="nav-links">
+            <a href="#">首页</a>
+            <a href="#">关于我们</a>
+            <a href="#">服务</a>
+            <a href="#">联系我们</a>
+        </div>
+    </div>
+</body>
+
+</html>
