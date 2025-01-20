@@ -528,6 +528,24 @@ function factorial(n) {
 console.log(factorial(5)); // 输出：120
 ```
 
+// 递归函数
+// 递归函数是指在函数体内调用函数本身
+// 这个例子中, sumArray 函数是一个递归函数, 用于计算数组中所有元素的和
+```
+function sumArray(arr) {
+    // 如果数组为空，返回0
+    if (arr.length === 0) {
+        return 0;
+    }
+    // 取出数组的第一个元素，加上剩余部分的和
+    return arr[0] + sumArray(arr.slice(1));
+}
+
+// 测试
+const numbers = [1, 2, 3, 4, 5];
+console.log(sumArray(numbers)); // 输出：15
+```
+
 ---
 
 ### 5. 闭包
@@ -575,6 +593,19 @@ JavaScript 事件是用户与网页交互的核心。通过监听和处理事件
 #### **键盘事件**
 - `keydown`：按下键盘。
 - `keyup`：释放键盘。
+  
+获取键盘按下的「值」
+```
+// 监听键盘按下事件
+document.addEventListener('keydown', function(event) {
+  // 获取按下的键值
+  const key = event.key; // 按下的键
+  const keyCode = event.code; // 键盘的物理按键代码
+
+  // 显示按下的键值
+  document.getElementById('output').textContent = `你按下了: "${key}" (Code: ${keyCode})`;
+});
+```
 
 #### **窗口事件**
 - `load`：页面加载完成。
@@ -635,6 +666,31 @@ link.addEventListener("click", function (event) {
   event.preventDefault(); // 阻止链接跳转
   console.log("默认行为被阻止");
 });
+```
+
+示例代码：阻止事件冒泡
+```
+.parent {
+  width: 200px;
+  height: 200px;
+  background-color: lightblue;
+  padding: 20px;
+}
+.child {
+  width: 100px;
+  height: 100px;
+  background-color: lightcoral;
+}
+
+<div class="parent" onclick="alert('Parent Div Clicked!')">
+  <div class="child" onclick="childClick(event)">Click Me</div>
+</div>
+
+function childClick(event) {
+  alert('Child Div Clicked!');
+  // 阻止事件冒泡
+  event.stopPropagation();
+}
 ```
 
 ---

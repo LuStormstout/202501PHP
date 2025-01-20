@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js event</title>
+    <style>
+        #btn {
+            width: 200px;
+            height: 60px;
+            background-color: aqua;
+        }
+
+        .event-object-test {
+            color: blue;
+            text-decoration: none;
+        }
+
+        .parent {
+            width: 200px;
+            height: 200px;
+            background-color: lightblue;
+            padding: 20px;
+        }
+
+        .child {
+            width: 100px;
+            height: 100px;
+            background-color: lightcoral;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>事件监听</h2>
+    <button id="btn">点击</button>
+    <h2>按下键盘上的任意键</h2>
+    <p id="output">键值将在这里显示...</p>
+    <h2>表单事件</h2>
+    <form action="" method="post" id="form-events">
+        <label for="name">姓名：</label>
+        <input type="text" name="name" id="name">
+        <input type="submit" value="提交">
+    </form>
+
+    <hr>
+    <h2>事件对象</h2>
+    <a class="event-object-test"="https://google.com">Google</a>
+
+    <hr>
+    <h2>事件冒泡</h2>
+    <!-- 我们把这种事件传递的过程叫做事件冒泡。事件冒泡的意思是，
+    当一个元素上的事件被触发的时候，该事件会从这个元素开始一直冒泡到最外层的元素。 -->
+    <div class="parent" onclick="alert('Parent Div Clicked!')">
+        <div class="child" onclick="childClick(event)">Click Me</div>
+    </div>
+
+    <script>
+        // 获取 DOM 元素
+        var btn = document.getElementById('btn');
+        // document 是整个文档对象
+        console.log(document);
+        // 这个 btn 是一个 DOM 元素
+        console.log(btn);
+
+        // 添加事件监听
+        // 事件类型：click、dblclick、mouseover、mouseout
+        btn.addEventListener('click', function () {
+            console.log('点击了按钮');
+        });
+        btn.addEventListener('dblclick', function () {
+            console.log('双击了按钮');
+        });
+        btn.addEventListener('mouseover', function () {
+            btn.style.backgroundColor = 'red';
+        });
+        btn.addEventListener('mouseout', function () {
+            btn.style.backgroundColor = 'aqua';
+        });
+
+        // 移除事件监听
+        function clickHandler() {
+            console.log('这个是移除事件监听中块的点击事件');
+        }
+
+        // 添加事件监听
+        btn.addEventListener('click', clickHandler);
+        // 移除事件监听
+        btn.removeEventListener('click', clickHandler);
+
+        // 事件对象
+        let link = document.querySelector('a');
+        link.addEventListener('click', function (event) {
+            // 阻止默认行为
+            event.preventDefault();
+            console.log('点击了链接');
+            console.log(event);
+            console.log(event.type);
+
+            // .target 和 .currentTarget 的区别, .target 是触发事件的元素，.currentTarget 是绑定事件的元素
+            console.log(event.target);
+            console.log(event.currentTarget);
+        });
+
+        // 监听键盘按下事件
+        document.addEventListener('keydown', function (event) {
+
+            if (event.code === 'Enter') {
+                console.log('你按下了回车键');
+            }
+
+            // 获取按下的键值
+            let key = event.key; // 按下的键
+            let keyCode = event.code; // 键盘的物理按键代码
+
+            // 显示按下的键值
+            document.getElementById('output').textContent = `你按下了: "${key}" (Code: ${keyCode})`;
+        });
+
+        // 监听窗口大小变化
+        window.addEventListener('resize', function () {
+            console.log('窗口大小发生了变化');
+        });
+
+        // 页面加载完成
+        // window 对象代表整个浏览器窗口
+        // load 和 resize 事件都是 window 对象的事件
+        window.addEventListener('load', function () {
+            console.log('页面加载完成');
+        });
+
+        // 表单事件
+        let form = document.getElementById('form-events');
+        form.addEventListener('submit', function (event) {
+            // 阻止表单提交
+            event.preventDefault();
+            console.log('表单提交了');
+        });
+
+        form.addEventListener('change', function () {
+            console.log('表单内容发生了变化');
+        });
+
+        let name = document.getElementById('name');
+        name.addEventListener('focus', function () {
+            console.log('输入框获取焦点');
+        });
+
+        name.addEventListener('blur', function () {
+            console.log('输入框失去焦点');
+        });
+
+        // 阻止事件冒泡
+        function childClick(event) {
+            alert('Child Div Clicked!');
+            // 阻止事件冒泡
+            event.stopPropagation();
+        }
+
+    </script>
+</body>
+
+</html>
