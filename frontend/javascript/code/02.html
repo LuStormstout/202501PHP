@@ -1,11 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>classes</title>
+    <title>js practice</title>
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+        }
+
+        .timer {
+            border: 1px solid #000;
+            width: 350px;
+            height: 150px;
+            padding: 10px;
+            text-align: center;
+            border-radius: 40px;
+            box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        button {
+            width: 100px;
+            padding: 5px 10px;
+            margin: 5px;
+            border-radius: 40px;
+            box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5);
+        }
+
+        #start {
+            background-color: green;
+            color: white;
+        }
+
+        #stop {
+            background-color: red;
+            color: white;
+        }
+
+        #reset {
+            background-color: blue;
+            color: white;
+        }
+    </style>
 </head>
+
 <body>
+    <div class="container">
+        <div class="section-left" style="flex: 4;"></div>
+        <div class="timer" style="flex: 2;">
+            <h1 id="timer">0</h1>
+            <button id="start">Start</button>
+            <button id="stop">Stop</button>
+            <button id="reset">Reset</button>
+        </div>
+        <div class="section-right" style="flex: 4;"></div>
+    </div>
+
     <script src="classes.js"></script>
+    <script src="timer.js"></script>
+    <script src="error.js"></script>
 </body>
+
 </html>
