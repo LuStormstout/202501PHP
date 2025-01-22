@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>待办事项</title>
+    <style>
+        .container {
+            display: flex;
+        }
+
+        .section-center {
+            text-align: center;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #ccc;
+            margin: 20px;
+        }
+
+        #todo-input {
+            width: 40%;
+            height: 30px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            padding: 0 10px;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        #add-btn {
+            width: 100px;
+            height: 33px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #todo-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        #todo-list li {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        #todo-list button {
+            margin-left: 10px;
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="section-left" style="flex: 4;"></div>
+        <div class="section-center" style="flex: 3;">
+            <h1>待办事项</h1>
+            <input type="text" id="todo-input" placeholder="添加新的待办事项">
+            <button id="add-btn">添加</button>
+            <ul id="todo-list"></ul>
+        </div>
+        <div class="cestion-right" style="flex: 4;"></div>
+    </div>
+
+    <script src="todo.js"></script>
+</body>
+
+</html>
