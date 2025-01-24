@@ -209,22 +209,21 @@ foreach ($studentA as $key => $value) {
 // count() 函数用于返回数组的长度, [] 数组的长度是 0, [1, 2, 3] 数组的长度是 3
 // strlen() 函数用于返回字符串的长度
 // 以下的这些代码是我们在页面上要循环展示学生成绩的时候, 可以参考的代码
+// 这个地方其实是不用写两层循环的, 但是为了让大家看到多层循环的写法, 我们这里写了两层循环
 echo "<hr>";
 echo "姓名: " . $studentA['name'];
 echo "<br>";
 echo "年龄: " . $studentA['age'];
 echo "<br>";
+echo "<ul>";
 foreach ($studentA as $key => $value) {
-    echo "<ul>";
     if ($key === 'scores' && is_array($value) && count($value) > 0) {
-        echo "<br>";
         foreach ($value as $score) {
             echo "<li>$score</li>";
-            echo "<br>";
         }
     }
-    echo "</ul>";
 }
+echo "</ul>";
 
 
 
