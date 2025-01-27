@@ -43,6 +43,19 @@ var_dump($_GET); // 通过 URL 传递的参数
 echo '<hr>';
 var_dump($_POST); // 通过表单提交的参数, 默认情况下, 表单提交的数据是通过 POST 方法提交的
 echo '<hr>';
+if ($_POST) {
+    if (
+        isset($_POST['username']) &&
+        $_POST['username'] === 'admin' &&
+        isset($_POST['password']) &&
+        $_POST['password'] === '123456'
+    ) {
+        header('Location: http://127.0.0.1/cod/202501PHP/backend/week2/code/global-var-form.php?isLogin=true', true, 302);
+    } else {
+        header('Location: http://127.0.0.1/cod/202501PHP/backend/week2/code/global-var-form.php?isLogin=false', true, 302);
+    }
+}
+echo '<hr>';
 var_dump($_REQUEST);
 echo '<hr>';
 $_COOKIE['is_admin'] = true;
