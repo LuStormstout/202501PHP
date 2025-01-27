@@ -61,7 +61,7 @@ class Truck extends Car
 
 // Vehicle 车辆
 // 接口是一种抽象类型，是一种没有具体实现的类。
-// 它的作用是定义一些规定好的方法，让其他类去实现这些方法。
+// 它的作用是定义一些规定好的方法，让其他类去实现这些方法
 interface Vehicle
 {
     public function getVehicleInfo(): string;
