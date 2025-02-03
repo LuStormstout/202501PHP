@@ -1,6 +1,14 @@
 <?php
 // index.php - 项目入口文件, 负责加载控制器和模型, 并分发请求
 
+
+// 定义项目根目录
+const BASE_PATH = __DIR__ . '/';
+
+// 我们在执行的时候, 真正执行的是这个文件, 即所谓的当前文件
+// 因为我们在这里引入了 controllers 和 models 对应的文件
+// 所以当在 controllers 和 models 中的文件中引入文件的时候的相对路径是相对于 index.php 文件的
+
 // 自动加载控制器和模型
 spl_autoload_register(function ($className) {
     if (file_exists('controllers/' . $className . '.php')) {
@@ -15,7 +23,8 @@ $controller = $_GET['controller'] ?? 'Product';
 $action = $_GET['action'] ?? 'list';
 
 // 创建控制器实例并调用对应的方法
-$controller = new $controller() . 'Controller';
+$controllerName = $controller . 'Controller';
+$controller = new $controllerName();
 $controller->{$action}();
 
 // 大家开发的流程应该是先去写 config 定义数据库连接信息
