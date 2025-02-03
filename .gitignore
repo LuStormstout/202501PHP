@@ -51,4 +51,7 @@ yarn-error.log*
 ~$*
 
 # 忽略上传文件
-./product/uploads/*
+product/uploads/*
+
+# 忽略配置文件
+product/config/config.php
