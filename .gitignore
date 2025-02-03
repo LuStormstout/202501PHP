@@ -1,0 +1,54 @@
+# macOS 系统文件
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+Thumbs.db
+._*
+.Spotlight-V100
+.Trashes
+*.swp
+*.lock
+
+# Visual Studio Code
+.vscode/
+.history/
+*.code-workspace
+
+# JetBrains IDEs (IntelliJ IDEA, PyCharm, WebStorm, etc.)
+.idea/
+*.iml
+*.iws
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/dictionaries
+.idea/vcs.xml
+.idea/**/shelf/
+.idea/httpRequests
+.idea/codeStyles
+
+# Sublime Text
+*.sublime-workspace
+*.sublime-project
+
+# macOS 特定文件夹 (例如 .localized)
+.localized
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Logs
+*.log
+*.log.*
+
+# OS和备份文件
+*.bak
+*.tmp
+*.temp
+~$*
+
+# 忽略上传文件
+./product/uploads/*
