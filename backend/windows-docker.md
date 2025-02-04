@@ -74,6 +74,7 @@ services:
     volumes:
       - ../php:/var/www/html  # 让 PHP 访问所有项目
       - ../logs/php:/var/log/php  # 记录 PHP 运行日志
+      - ./php/php.ini:/usr/local/etc/php/conf.d/custom-php.ini  # 额外加载本地 php.ini 配置
     networks:
       - app_network
 
