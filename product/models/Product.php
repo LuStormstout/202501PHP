@@ -69,4 +69,46 @@ class Product
         }
         return false;
     }
+
+    /**
+     * 删除商品
+     *
+     * @param $id
+     * @return bool
+     */
+    public function deleteProduct($id): bool
+    {
+        $sql = "DELETE FROM `products` WHERE `id` = :id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':id', $id);
+        if ($stmt->execute()) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * 更新商品
+     *
+     * @param $id
+     * @param $name
+     * @param $price
+     * @param $description
+     * @param $image
+     * @return bool
+     */
+    public function saveProduct($id, $name, $price, $description, $image): bool
+    {
+        $sql = "UPDATE `products` SET `name` = :name, `price` = :price, `description` = :description, `image` = :image WHERE `id` = :id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':name', $name);
+        $stmt->bindParam(':price', $price);
+        $stmt->bindParam(':description', $description);
+        $stmt->bindParam(':image', $image);
+        if ($stmt->execute()) {
+            return true;
+        }
+        return false;
+    }
 }

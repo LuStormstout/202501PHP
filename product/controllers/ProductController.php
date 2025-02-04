@@ -58,7 +58,7 @@ class ProductController
      * @param array $file
      * @return array
      */
-    public function uploadImage(array $file): array
+    protected function uploadImage(array $file): array
     {
         $imageUploadResult = [];
         // 设置目标文件路径
@@ -127,29 +127,88 @@ class ProductController
 
             header('Location: index.php');
         } else {
-            include BASE_PATH . 'views/product_add.html';
+            include BASE_PATH . 'views/product_add.php';
         }
     }
 
     /**
      * 删除商品
      */
-    public function delete()
+    public function delete(): void
     {
-        // 删除商品我需要知道要删除哪一个商品, 所以我需要商品的唯一标识
-        // 我应该从 URL 中获取商品的唯一标识, 也就是 GET 参数中的
-        // 我需要调用模型里面的对应的删除方法去操作数据库
-        // 需要注意的是我还要同时删除掉对应商品的图片
-        // ...
+        $id = (int)$_GET['id'] ?? 0;
+        $product = $this->productModel->getProductById($id);
+        if ($product === null) {
+            echo '商品不存在';
+            return;
+        }
+        $image = $product['image'];
+        if ($this->productModel->deleteProduct($id) === false) {
+            echo '删除商品失败';
+        }
+
+        // 删除图片
+        unlink($image);
+        // if (file_exists($image) && unlink($image) === false) {
+        # todo 这里删除失败了需要去记录日志, 但是如果上面商品删除成功了, 我们也认为这个操作是成功的
+        // }
+
+        header('Location: index.php');
     }
 
     /**
-     * 更新商品
+     * 更新商品, 显示更新表单
      */
-    public function update()
+    public function update(): void
     {
-        // 我需要先把需要更新的商品信息获取到显示在表单中(数据回显)
-        // ...
+        $id = (int)$_GET['id'] ?? 0;
+        $product = $this->productModel->getProductById($id);
+        if ($product === null) {
+            echo '商品不存在';
+            return;
+        }
+        include BASE_PATH . 'views/product_update.php';
+    }
+
+    /**
+     * 更新商品, 处理更新请求
+     */
+    public function save(): void
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = (int)$_POST['id'];
+            $name = htmlspecialchars($_POST['name']);
+            $price = floatval($_POST['price']);
+            $description = htmlspecialchars($_POST['description']);
+
+            $product = $this->productModel->getProductById($id);
+            if ($product === null) {
+                echo '商品不存在';
+                return;
+            }
+
+            if ($_FILES['image']['tmp_name'] === '') {
+                $imageUploadResult = ['status' => true, 'path' => $product['image']];
+            } else {
+                $imageUploadResult = $this->uploadImage($_FILES['image']);
+
+                if ($imageUploadResult['status'] === false) {
+                    echo $imageUploadResult['error'];
+                    return;
+                }
+                // 删除原图片
+                unlink($product['image']);
+            }
+
+            if ($this->productModel->saveProduct(
+                    $id, $name, $price, $description, $imageUploadResult['path']
+                ) === false) {
+                echo '更新商品失败';
+                return;
+            }
+
+            header('Location: index.php?action=detail&id=' . $id);
+        }
     }
 
 }
