@@ -52,6 +52,7 @@ services:
   nginx:
     image: nginx:latest  # 使用最新的官方 Nginx 镜像
     container_name: nginx  # 指定容器名称
+    restart: always  # 确保 Nginx 自动重启
     ports:
       - "80:80"  # 绑定本机 80 端口到容器的 80 端口
     volumes:
@@ -69,6 +70,7 @@ services:
   php:
     build: ./php  # 使用自定义 Dockerfile 构建 PHP 容器
     container_name: php
+    restart: always  # 确保 PHP 自动重启
     volumes:
       - ../php:/var/www/html  # 让 PHP 访问所有项目
       - ../logs/php:/var/log/php  # 记录 PHP 运行日志
@@ -90,7 +92,7 @@ services:
     ports:
       - "3306:3306"  # 绑定 MySQL 端口
     volumes:
-      - ./mysql:/var/lib/mysql  # 持久化 MySQL 数据
+      - mysql_data:/var/lib/mysql  # 使用命名卷存储 MySQL 数据
       - ../logs/mysql:/var/log/mysql  # 记录 MySQL 日志
     networks:
       - app_network
@@ -100,6 +102,12 @@ services:
 # --------------------------
 networks:
   app_network:
+
+# --------------------------
+# 使用命名卷存储 MySQL 数据，避免权限问题
+# --------------------------
+volumes:
+  mysql_data:
 ```
 
 ---
@@ -108,9 +116,9 @@ networks:
 ```nginx
 server {
     listen 80;
-    server_name myapp1.local;
+    server_name laravel.product.local;
 
-    root /var/www/html/myapp1/public;
+    root /var/www/html/202501php/laravel-product/public;
     index index.php index.html;
 
     location / {
@@ -126,9 +134,9 @@ server {
 
 server {
     listen 80;
-    server_name myapp2.local;
+    server_name 202501php.local;
 
-    root /var/www/html/myapp2/public;
+    root /var/www/html/202501php;
     index index.php index.html;
 
     location / {
@@ -186,8 +194,11 @@ upload_max_filesize = 100M
 ## **📌 6. 修改 Windows `hosts` 文件**
 在 `C:\Windows\System32\drivers\etc\hosts` 文件中添加：
 ```
-127.0.0.1 myapp1.local
-127.0.0.1 myapp2.local
+# 202501php 目录
+127.0.0.1 202501php.local
+
+# Laravel 练习项目
+127.0.0.1 laravel-product.local
 ```
 然后运行：
 ```sh
