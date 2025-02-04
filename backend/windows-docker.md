@@ -275,3 +275,51 @@ docker image prune -a
 ```
 
 ---
+
+### **📌 修复 Laravel `storage/logs/laravel.log` 权限问题**
+
+#### **1️⃣ 进入 PHP 容器**
+```sh
+docker exec -it php bash
+```
+
+#### **2️⃣ 修改 `storage` 和 `bootstrap/cache` 目录权限**
+```sh
+chmod -R 777 /var/www/html/202501php/laravel-product/storage
+chmod -R 777 /var/www/html/202501php/laravel-product/bootstrap/cache
+```
+
+#### **3️⃣ 修改 Laravel 目录归属**
+```sh
+chown -R www-data:www-data /var/www/html/202501php/laravel-product
+```
+
+#### **4️⃣ 退出容器并重启 Nginx**
+```sh
+exit
+docker-compose restart nginx
+```
+
+#### **5️⃣ 清理 Laravel 缓存**
+```sh
+docker exec -it php bash -c "cd /var/www/html/202501php/laravel-product && php artisan config:clear && php artisan cache:clear && php artisan route:clear"
+```
+
+#### **6️⃣ 重启 PHP**
+```
+然后重新启动 PHP 容器：
+```sh
+docker-compose restart php
+```
+
+#### **7️⃣ 确保日志文件可写**
+如果问题仍然存在，进入 PHP 容器手动创建日志文件并赋权：
+```sh
+docker exec -it php bash
+cd /var/www/html/202501php/laravel-product/storage/logs
+touch laravel.log
+chmod 666 laravel.log
+exit
+```
+
+🚀 **执行完这些步骤后，Laravel 应该可以正确写入日志！如果仍有问题，请检查 `docker logs php` 以获取更多错误信息。**
