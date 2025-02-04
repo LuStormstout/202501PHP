@@ -180,13 +180,14 @@ CMD ["php-fpm"]
 
 ## **📌 5. `php.ini`（PHP 配置）**
 ```ini
-error_reporting = E_ALL
-display_errors = On
-display_startup_errors = On
-max_execution_time = 300
-memory_limit = 512M
-post_max_size = 100M
-upload_max_filesize = 100M
+error_reporting = E_ALL  # 允许显示所有错误，包括警告和通知
+display_errors = On  # 在页面上显示错误（开发环境建议开启，生产环境建议关闭）
+display_startup_errors = On  # 启动时显示 PHP 初始化阶段的错误
+max_execution_time = 300  # 最大执行时间（秒），防止脚本长时间运行导致服务器卡死
+memory_limit = 512M  # PHP 进程最大可用内存，Laravel 需要较高内存
+post_max_size = 100M  # 允许 POST 请求的最大数据大小，影响文件上传等操作
+upload_max_filesize = 100M  # 允许上传文件的最大大小
+date.timezone = Asia/Tokyo  # 设置默认时区为东京，确保时间函数返回正确时间
 ```
 
 ---
