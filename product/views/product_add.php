@@ -25,19 +25,20 @@
             <form action="index.php?action=add" method="post" enctype="multipart/form-data">
                 <div class="mb-3">
                     <label for="name" class="form-label">商品名称：</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="请输入商品名称">
+                    <input type="text" class="form-control" id="name" name="name" placeholder="请输入商品名称" required>
                 </div>
                 <div class="mb-3">
                     <label for="price" class="form-label">商品价格：</label>
-                    <input type="number" class="form-control" id="price" name="price" placeholder="请输入商品价格">
+                    <input type="number" class="form-control" id="price" name="price" placeholder="请输入商品价格"
+                           required>
                 </div>
                 <div class="mb-3">
                     <label for="image" class="form-label">商品图片：</label>
-                    <input class="form-control" type="file" id="image" name="image">
+                    <input class="form-control" type="file" id="image" name="image" required>
                 </div>
                 <div class="mb-3">
                     <label for="description" class="form-label">商品描述：</label>
-                    <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+                    <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
                 </div>
                 <div>
                     <input class="btn btn-primary" type="submit" value="添加">
