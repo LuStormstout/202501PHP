@@ -12,6 +12,6 @@ const DATABASE = [
 
 const UPLOAD_IMAGE = [
     'ALLOWED_TYPES' => ['png', 'jpg', 'gif', 'jpeg'], // 允许上传的图片类型
-    'MAX_SIZE' => 500000, // 允许上传的图片最大尺寸
+    'MAX_SIZE' => 800000, // 允许上传的图片最大尺寸 800KB
     'UPLOAD_DIR' => 'uploads/', // 上传文件的目录
 ];
