@@ -194,4 +194,73 @@ upload_max_filesize = 100M
 docker-compose restart nginx
 ```
 
-至此，Docker + Laravel 开发环境已完整搭建！🚀
+## **📌 7. Docker 常用命令**
+```sh
+# 启动 Docker 容器
+cd C:\www\docker
+docker-compose up -d
+
+# 查看正在运行的容器
+docker ps
+
+# 查看所有（包括已停止的）容器
+docker ps -a
+
+# 停止所有容器
+docker-compose down
+
+# 重启所有容器
+docker-compose restart
+
+# 重新启动 Nginx 服务器
+docker-compose restart nginx
+
+# 重新构建 PHP 容器（如果修改了 Dockerfile）
+docker-compose build php
+
+docker-compose up -d --build
+
+# 进入 PHP 容器
+docker exec -it php bash
+
+# 进入 MySQL 容器
+docker exec -it mysql bash
+
+# 进入 MySQL 数据库
+mysql -u root -p
+
+# 在 PHP 容器中安装 Laravel 9 项目
+cd /var/www/html
+composer create-project --prefer-dist laravel/laravel="^9.0" myapp1
+
+# 清理 Docker 未使用的资源（停止的容器、未使用的网络、dangling 镜像等）
+docker system prune -a
+
+# 查看容器日志
+docker logs php
+
+docker logs nginx
+
+docker logs mysql
+
+# 监视实时日志
+docker logs -f php
+
+docker logs -f nginx
+
+docker logs -f mysql
+
+# 删除所有已停止的容器
+docker container prune
+
+# 删除所有未使用的网络
+docker network prune
+
+# 删除所有未使用的卷
+docker volume prune
+
+# 删除所有未使用的镜像
+docker image prune -a
+```
+
+---
