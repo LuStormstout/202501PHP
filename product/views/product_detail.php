@@ -11,7 +11,7 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-white">
-    <a href="#" class="navbar-brand ms-5">Product</a>
+    <a href="index.php" class="navbar-brand ms-5">Product</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -34,10 +34,31 @@
                 <p><strong>更新时间:</strong> <?= $product['updated_at']; ?></p>
                 <a href="index.php" class="btn btn-primary">返回列表</a>
                 <a href="index.php?action=update&id=<?= $product['id']; ?>" class="btn btn-primary">编辑</a>
-                <a href="index.php?action=delete&id=<?= $product['id']; ?>" class="btn btn-danger">删除</a>
+                <a href="javascript:void(0);" class="btn btn-danger"
+                   data-bs-toggle="modal" data-bs-target="#exampleModal">删除</a>
             <?php endif; ?>
         </div>
         <div class="col-md-2"></div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">删除商品确认</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                数据删除后无法恢复, 你确定要删除吗?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                <a href="index.php?action=delete&id=<?= $product['id']; ?>" type="button"
+                   class="btn btn-danger">确定删除</a>
+            </div>
+        </div>
     </div>
 </div>
 
