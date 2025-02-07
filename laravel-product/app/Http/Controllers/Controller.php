@@ -10,4 +10,11 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    /**
+     * 每页显示的数据条数
+     *
+     * @var int $perPage
+     */
+    protected int $perPage = 6;
 }

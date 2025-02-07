@@ -23,12 +23,23 @@ class ProductPostRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
+        $rules = [
             'name' => 'required|max:255',
             'price' => 'required|numeric',
-            // 'image' => 'required|max:255',
             'description' => 'required',
         ];
+
+        // **如果是创建（store），图片是必填项**
+        if ($this->isMethod('post')) {
+            $rules['image'] = 'required|image|mimes:jpeg,png,jpg,gif,webp|max:2048';
+        }
+
+        // **如果是更新（update），图片可以为空**
+        if ($this->isMethod('put') || $this->isMethod('patch')) {
+            $rules['image'] = 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048';
+        }
+
+        return $rules;
     }
 
     /**
@@ -43,8 +54,10 @@ class ProductPostRequest extends FormRequest
             'name.max' => '商品名称不能超过255个字符',
             'price.required' => '商品价格不能为空',
             'price.numeric' => '商品价格必须是数字',
-            // 'image.required' => '商品图片不能为空',
-            // 'image.max' => '商品图片不能超过255个字符',
+            'image.required' => '图片上传失败',
+            'image.image' => '上传的文件必须是图片',
+            'image.mimes' => '图片格式必须是 jpeg, png, jpg, gif, svg',
+            'image.max' => '图片大小不能超过 2MB',
             'description.required' => '商品描述不能为空',
         ];
     }

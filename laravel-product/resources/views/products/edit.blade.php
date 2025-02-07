@@ -3,7 +3,7 @@
 @section('title', '更新商品')
 
 @section('content')
-    <div class="row">
+    <div class="row mb-5">
         <div class="col-md-3"></div>
         <div class="col-md-6">
             <h1>更新商品</h1>
@@ -32,7 +32,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="current_image" class="form-label">当前图片：</label>
-                    <img id="current_image" src="{{ $product->image }}" class="img-thumbnail"
+                    <img id="current_image" src="{{ asset('storage/' . $product->image) }}" class="img-thumbnail"
                          alt="{{ $product->name }}">
                 </div>
                 <div class="mb-3">

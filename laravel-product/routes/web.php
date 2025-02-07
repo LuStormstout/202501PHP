@@ -23,6 +23,7 @@ Route::get('/', [ProductsController::class, 'index'])->name('home');
 
 // Restful style
 Route::resource('products', ProductsController::class);
+Route::get('products/{product}/show-delete-page', [ProductsController::class, 'showDeletePage'])->name('products.showDeletePage');
 //GET|HEAD        products ..................... products.index › ProductsController@index 列表页
 //POST            products ..................... products.store › ProductsController@store 新增
 //GET|HEAD        products/create ............ products.create › ProductsController@create 展示新增表单

@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8">
-            <img src="{{ $product->image }}" class="img-thumbnail" alt="{{ $product->name }}">
+            <img src="{{ asset('storage/' . $product->image) }}" class="img-thumbnail" alt="{{ $product->name }}">
             <h2>{{ $product->name }}</h2>
             <p><strong>价格:</strong> {{ $product->price }}</p>
             <p><strong>商品描述:</strong> {{ $product->description }}</p>

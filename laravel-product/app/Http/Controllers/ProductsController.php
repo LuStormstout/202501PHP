@@ -8,11 +8,10 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Storage;
 
 class ProductsController extends Controller
 {
-
-    # Laravel 中的开发顺序是：路由 -> 控制器 -> 模型 -> 视图
 
     /**
      * Display a listing of the resource.
@@ -21,7 +20,11 @@ class ProductsController extends Controller
      */
     public function index(): Factory|View|Application
     {
-        return view('products/index', ['products' => Product::all()]);
+        // 这里需要注意的是, 我们想要使用 bootstrap 的分页样式,
+        // 需要在 app/Providers/AppServiceProvider.php
+        // 文件中的 boot 方法中调用 Paginator::useBootstrap() 方法
+        $products = Product::orderBy('created_at')->paginate($this->perPage);
+        return view('products/index', compact('products'));
     }
 
     /**
@@ -45,9 +48,34 @@ class ProductsController extends Controller
         return view('products/create');
     }
 
-    protected function uploadImage()
+    /**
+     * Upload image
+     * 上传图片到 storage 目录下面之后, 需要执行 php artisan storage:link 命令,
+     * 将 storage/app/public 目录下的文件软链接到 public/storage 目录下面
+     * !!! 其实就是执行 Linux 的 ln -s 命令
+     *
+     * @param $image
+     * @return ?string
+     */
+    protected function uploadImage($image): ?string
     {
-        # todo upload image
+        $fileName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
+        $path = 'uploads/products/images/';
+        if (Storage::disk('public')->putFileAs($path, $image, $fileName)) {
+            return $path . $fileName;
+        }
+
+        return null;
+    }
+
+    /**
+     * Remove image
+     *
+     * @param $image
+     */
+    protected function removeImage($image): void
+    {
+        Storage::disk('public')->delete($image);
     }
 
     /**
@@ -62,7 +90,11 @@ class ProductsController extends Controller
         $product = new Product();
         $product->name = $validated['name'];
         $product->price = $validated['price'];
-        // $product->image = $request->input('image');
+        $image = $this->uploadImage($request->file('image'));
+        if ($image === null) {
+            return redirect()->back()->withInput()->withErrors(['image' => '上传图片失败']);
+        }
+        $product->image = $image;
         $product->description = $validated['description'];
         if ($product->save()) {
             return redirect()->route('products.index');
@@ -84,16 +116,29 @@ class ProductsController extends Controller
     /**
      * Update the specified product in storage.
      *
-     * @param ProductPostRequest $request
      * @param Product $product
+     * @param ProductPostRequest $request
      * @return RedirectResponse
      */
-    public function update(ProductPostRequest $request, Product $product): RedirectResponse
+    public function update(Product $product, ProductPostRequest $request): RedirectResponse
     {
+        if ($request->hasFile('image')) {
+            $image = $this->uploadImage($request->file('image'));
+            if ($image === null) {
+                return redirect()->back()->withInput()->withErrors(['image' => '上传图片失败']);
+            }
+
+            // Remove old image if it has value in database
+            if ($product->image) {
+                $this->removeImage($product->image);
+            }
+
+            $product->image = $image;
+        }
+
         $validated = $request->validated();
         $product->name = $validated['name'];
         $product->price = $validated['price'];
-        // $product->image = $request->input('image');
         $product->description = $validated['description'];
         if ($product->save()) {
             return redirect()->route('products.index');
